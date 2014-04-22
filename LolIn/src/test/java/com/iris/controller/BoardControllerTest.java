@@ -17,6 +17,8 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
 
+import com.iris.dao.BoardDao;
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({
         "file:src/main/webapp/WEB-INF/applicationContext.xml",
@@ -29,6 +31,9 @@ public class BoardControllerTest {
 
     @Autowired
     WebApplicationContext context;
+    
+    @Autowired
+    BoardDao boardDao;
 
     @Before
     public void setUp() {
@@ -36,11 +41,23 @@ public class BoardControllerTest {
     }
 
     @Test
-    public void selectAll() throws Exception {
+    public void findAll() throws Exception {
 
         MockHttpSession session = new MockHttpSession();
 
-        mockMvc.perform(get("/selectAll").session(session)).andExpect(status().isOk())
+        mockMvc.perform(get("/findAll").session(session)).andExpect(status().isOk())
+                .andDo(print())
+                .andReturn();
+    }
+    
+    @Test
+    public void findOne() throws Exception {
+
+        MockHttpSession session = new MockHttpSession();
+
+        mockMvc.perform(get("/findOne").session(session)
+        		.param("id", String.valueOf(boardDao.findAll().get(0).getId()))
+        		).andExpect(status().isOk())
                 .andDo(print())
                 .andReturn();
     }

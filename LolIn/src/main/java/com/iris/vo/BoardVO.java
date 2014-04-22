@@ -24,4 +24,6 @@ public class BoardVO {
 		return boardListResult;
 	}
 	
+	
+	
 }
