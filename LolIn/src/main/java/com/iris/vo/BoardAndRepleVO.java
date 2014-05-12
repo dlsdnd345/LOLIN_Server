@@ -37,7 +37,7 @@ public class BoardAndRepleVO {
 		vo.put(BOARD_CONTENT, board.getContent());
 		vo.put(POSITION, board.getPosition());
 		vo.put(SUMMONER_NAME, board.getSummonerName());
-		vo.put(BOARD_PLAY_TIME, format.format(board.getPlayTime()));
+		vo.put(BOARD_PLAY_TIME, board.getPlayTime());
 		vo.put(BOARD_WRITE_TIME, format.format(board.getWriteTime()));
 
 		Map<String,Object> repleMap = new HashMap<>();

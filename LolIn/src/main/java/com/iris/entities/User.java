@@ -36,8 +36,8 @@ import javax.persistence.Table;
  */
 
 @Entity
-@Table(name = "board")
-public class Board implements Serializable {
+@Table(name = "user")
+public class User implements Serializable {
 	private static final long serialVersionUID = -426888916618211173L;
 
 	@Id
@@ -45,34 +45,15 @@ public class Board implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 
-	@Column(name = "title")
-	private String title;
-
-	@Column(name = "content")
-	private String content;
-
-	@Column(name = "summonerName")
-	private String summonerName;
-
-	@Column(name = "position")
-	private String position;
-
-	@Column(name = "rank")
-	private String rank;
+	@Column(name = "facebookId")
+	private String facebookId;
 
 	@Column(name = "writeTime")
 	private Date writeTime;
-
-	@Column(name = "playTime")
-	private String playTime;
-
-	@OneToMany(mappedBy="addBoards")
-	private List<Reple> addReple;
-
-	@ManyToOne
-	@JoinColumn(name="userId")
-	private User addUsers;
 	
+	@OneToMany(mappedBy="addUsers")
+	private List<Board> addBoard;
+
 	public int getId() {
 		return id;
 	}
@@ -81,44 +62,12 @@ public class Board implements Serializable {
 		this.id = id;
 	}
 
-	public String getTitle() {
-		return title;
+	public String getFacebookId() {
+		return facebookId;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
-	public String getContent() {
-		return content;
-	}
-
-	public void setContent(String content) {
-		this.content = content;
-	}
-
-	public String getSummonerName() {
-		return summonerName;
-	}
-
-	public void setSummonerName(String summonerName) {
-		this.summonerName = summonerName;
-	}
-
-	public String getPosition() {
-		return position;
-	}
-
-	public void setPosition(String position) {
-		this.position = position;
-	}
-
-	public String getRank() {
-		return rank;
-	}
-
-	public void setRank(String rank) {
-		this.rank = rank;
+	public void setFacebookId(String facebookId) {
+		this.facebookId = facebookId;
 	}
 
 	public Date getWriteTime() {
@@ -129,21 +78,12 @@ public class Board implements Serializable {
 		this.writeTime = writeTime;
 	}
 
-	public String getPlayTime() {
-		return playTime;
+	public List<Board> getAddBoard() {
+		return addBoard;
 	}
 
-	public void setPlayTime(String playTime) {
-		this.playTime = playTime;
+	public void setAddBoard(List<Board> addBoard) {
+		this.addBoard = addBoard;
 	}
-
-	public List<Reple> getAddReple() {
-		return addReple;
-	}
-
-	public void setAddReple(List<Reple> addReple) {
-		this.addReple = addReple;
-	}
-	
 	
 }

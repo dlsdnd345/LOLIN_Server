@@ -34,7 +34,6 @@ public class BoardDaoTest {
     	List<Board> boardList = boardDao.findAll();
     	
     	for (Board board : boardList) {
-			
     		System.err.println("@@@@@@@@@@@   :  " + board);
 		}
     	
@@ -49,7 +48,7 @@ public class BoardDaoTest {
     	board.setRank("실버");
     	board.setSummonerName("dlsdnd345");
     	board.setWriteTime(new Date());
-    	board.setPlayTime(new Date());
+    	board.setPlayTime("오전");
     	board.setPosition("서폿");
     	
     	boardDao.save(board);
@@ -58,7 +57,6 @@ public class BoardDaoTest {
     @Test
     public void findByName() {
         List<Board> boardList = bookQueryDsl.findByName("실버 서폿 구합니다 .");
-        
         assertThat(boardList.get(0).getTitle(), is("실버 서폿 구합니다 ."));
         
     }

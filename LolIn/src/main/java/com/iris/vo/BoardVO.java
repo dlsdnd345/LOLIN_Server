@@ -18,6 +18,7 @@ public class BoardVO {
 			boardResult.setPlayTime(board.getPlayTime());
 			boardResult.setPosition(board.getPosition());
 			boardResult.setRank(board.getRank());
+			boardResult.setWriteTime(board.getWriteTime());
 			boardResult.setSummonerName(board.getSummonerName());
 			boardListResult.add(boardResult);
 		}

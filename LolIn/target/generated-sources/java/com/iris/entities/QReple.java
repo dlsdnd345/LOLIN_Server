@@ -51,7 +51,7 @@ public class QReple extends EntityPathBase<Reple> {
 
     public QReple(Class<? extends Reple> type, PathMetadata<?> metadata, PathInits inits) {
         super(type, metadata, inits);
-        this.addBoards = inits.isInitialized("addBoards") ? new QBoard(forProperty("addBoards")) : null;
+        this.addBoards = inits.isInitialized("addBoards") ? new QBoard(forProperty("addBoards"), inits.get("addBoards")) : null;
     }
 
 }
