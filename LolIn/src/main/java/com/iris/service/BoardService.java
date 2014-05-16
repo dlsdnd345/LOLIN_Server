@@ -8,6 +8,6 @@ import com.iris.vo.BoardAndRepleVO;
 
 public interface BoardService {
 
-	public List<Board> findAll();
+	public List<Map<String,Object>> findAll();
 	public Map<String, Object> findOne(int id);
 }

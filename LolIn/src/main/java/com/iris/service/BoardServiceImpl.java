@@ -20,7 +20,7 @@ public class BoardServiceImpl implements BoardService{
 	BoardDao boardDao;
 	
 	@Override
-	public List<Board> findAll() {
+	public List<Map<String,Object>> findAll() {
 		List<Board> boardList = boardDao.findAll();
 		BoardVO boardVO = new BoardVO();
 		return boardVO.vo(boardList);
