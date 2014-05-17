@@ -23,7 +23,7 @@ public class UserController {
 
     @RequestMapping(value = "/user/findOne", method = RequestMethod.GET)
     @ResponseBody
-    public Object findOne(@RequestParam(value = "facebookId") String facebookId) throws ParseException {
+    public Object findOne(@RequestParam(value = "faceBookId") String facebookId) throws ParseException {
         return userService.findOne(facebookId);
     }
     

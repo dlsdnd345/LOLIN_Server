@@ -1,8 +1,11 @@
 package com.iris.dao;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.iris.entities.Board;
+import com.iris.entities.User;
 
 /*
  * GenericDao 를 상속받는 과정에서 해당 interFace의 Entity Type 을 지정해 준다.
@@ -15,6 +18,6 @@ import com.iris.entities.Board;
  */
 public interface BoardDao extends JpaRepository<Board, Integer> {
 
-    //List<Book> findByName(String name);
+    List<Board> findByAddUsers(User user);
     //List<Book> findByStatusOrderByStatusAsc(BookStatus status);
 }

@@ -24,6 +24,12 @@ public class BoardController {
         return boardService.findAll();
     }
     
+    @RequestMapping(value = "/board/findMyAll", method = RequestMethod.GET)
+    @ResponseBody
+    public Object findMyAll(@RequestParam(value = "faceBookId") String faceBookId) throws ParseException {
+        return boardService.findMyAll(faceBookId);
+    }
+    
     @RequestMapping(value = "/board/findOne", method = RequestMethod.GET)
     @ResponseBody
     public Object findOne(@RequestParam(value = "id") int id) throws ParseException {
