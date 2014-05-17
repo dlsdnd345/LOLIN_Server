@@ -15,6 +15,7 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.iris.entities.Board;
+import com.iris.entities.User;
 import com.iris.utils.BoardQueryDsl;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -28,6 +29,8 @@ public class BoardDaoTest {
     BoardDao boardDao;
     @Autowired
     BoardQueryDsl bookQueryDsl;
+    @Autowired
+    UserDao userDao;
 
     @Test
     public void selectAll() {
@@ -42,14 +45,16 @@ public class BoardDaoTest {
     @Test
     public void save(){
     	
+    	List<User> userList = userDao.findAll();
+    	
     	Board board = new Board();
-    	board.setTitle("실버 서폿 구합니다 .");
-    	board.setContent("블랭 , 말파 등 3종류 캐릭 할줄 아시는 분 구합니다.");
-    	board.setRank("실버");
-    	board.setSummonerName("dlsdnd345");
+    	board.setTitle("언랭이 같이 할 듀오 구합니다.");
+    	board.setContent("언랭이지만 실력은 남들 못지 않습니다 . 같이 즐겜 하실 유저분 구합니다.");
+    	board.setRank("unrank");
     	board.setWriteTime(new Date());
-    	board.setPlayTime("오전");
-    	board.setPosition("서폿");
+    	board.setPlayTime("오후");
+    	board.setPosition("미드");
+    	board.setAddUsers(userList.get(0));
     	
     	boardDao.save(board);
     }

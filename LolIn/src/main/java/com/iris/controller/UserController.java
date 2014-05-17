@@ -29,8 +29,9 @@ public class UserController {
     
     @RequestMapping(value = "/user/save", method = RequestMethod.GET)
     @ResponseBody
-    public Object save(@RequestParam(value = "facebookId") String facebookId) throws ParseException {
-        return userService.save(facebookId);
+    public Object save(@RequestParam(value = "faceBookId") String faceBookId ,
+    					@RequestParam(value = "summonerName") String summonerName) throws ParseException {
+        return userService.save(faceBookId,summonerName);
     }
 
 }

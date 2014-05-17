@@ -32,6 +32,7 @@ public class UserDaoTest {
 		
 		User user = new User();
 		user.setFacebookId("149471045");
+		user.setSummonerName("dlsdnd345");
 		user.setWriteTime(new Date());
 		userDao.save(user);
 	}

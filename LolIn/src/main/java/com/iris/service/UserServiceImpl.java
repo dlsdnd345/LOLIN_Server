@@ -29,11 +29,13 @@ public class UserServiceImpl implements UserService {
 
 
 	@Override
-	public String save(String facebookId) {
+	public String save(String facebookId,String summonerName) {
 		User user = userDao.findByFacebookId(facebookId);
 		if(user == null){
 			user = new User();
 		}
+		
+		user.setSummonerName(summonerName);
 		user.setFacebookId(facebookId);
 		user.setWriteTime(new Date());
 		

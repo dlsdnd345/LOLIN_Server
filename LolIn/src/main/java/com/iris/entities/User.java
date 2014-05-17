@@ -47,6 +47,9 @@ public class User implements Serializable {
 
 	@Column(name = "facebookId")
 	private String facebookId;
+	
+	@Column(name = "summonerName")
+	private String summonerName;
 
 	@Column(name = "writeTime")
 	private Date writeTime;
@@ -68,6 +71,14 @@ public class User implements Serializable {
 
 	public void setFacebookId(String facebookId) {
 		this.facebookId = facebookId;
+	}
+	
+	public String getSummonerName() {
+		return summonerName;
+	}
+
+	public void setSummonerName(String summonerName) {
+		this.summonerName = summonerName;
 	}
 
 	public Date getWriteTime() {

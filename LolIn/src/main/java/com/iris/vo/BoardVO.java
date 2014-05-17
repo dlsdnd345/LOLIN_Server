@@ -17,7 +17,6 @@ public class BoardVO {
 	private static final String POSITION = "position";
 	private static final String RANK = "rank";
 	private static final String WRITE_TIME = "writeTime";
-	private static final String SUMMONER_NAME = "summonerName";
 
 	public List<Map<String,Object>> vo(List<Board> boardList){
 
@@ -36,7 +35,6 @@ public class BoardVO {
 			vo.put(POSITION, board.getPosition());
 			vo.put(RANK, board.getRank());
 			vo.put(WRITE_TIME, format.format(board.getWriteTime()));
-			vo.put(SUMMONER_NAME, board.getSummonerName());
 			boardListResult.add(vo);
 		}
 		return boardListResult;

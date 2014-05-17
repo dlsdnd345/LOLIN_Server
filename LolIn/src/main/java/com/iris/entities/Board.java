@@ -44,15 +44,12 @@ public class Board implements Serializable {
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-
+	
 	@Column(name = "title")
 	private String title;
 
 	@Column(name = "content")
 	private String content;
-
-	@Column(name = "summonerName")
-	private String summonerName;
 
 	@Column(name = "position")
 	private String position;
@@ -97,14 +94,6 @@ public class Board implements Serializable {
 		this.content = content;
 	}
 
-	public String getSummonerName() {
-		return summonerName;
-	}
-
-	public void setSummonerName(String summonerName) {
-		this.summonerName = summonerName;
-	}
-
 	public String getPosition() {
 		return position;
 	}
@@ -144,6 +133,13 @@ public class Board implements Serializable {
 	public void setAddReple(List<Reple> addReple) {
 		this.addReple = addReple;
 	}
-	
+
+	public User getAddUsers() {
+		return addUsers;
+	}
+
+	public void setAddUsers(User addUsers) {
+		this.addUsers = addUsers;
+	}
 	
 }

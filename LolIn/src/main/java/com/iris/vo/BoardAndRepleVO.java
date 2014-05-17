@@ -14,7 +14,6 @@ public class BoardAndRepleVO {
 	private static final String BOARD_ID = "boardId";
 	private static final String TITLE = "title";
 	private static final String BOARD_CONTENT = "boardContent";
-	private static final String SUMMONER_NAME = "summonerName";
 	private static final String POSITION = "position";
 	private static final String RANK = "rank";
 	private static final String BOARD_WRITE_TIME = "boardWriteTime";
@@ -36,7 +35,6 @@ public class BoardAndRepleVO {
 		vo.put(TITLE, board.getTitle());
 		vo.put(BOARD_CONTENT, board.getContent());
 		vo.put(POSITION, board.getPosition());
-		vo.put(SUMMONER_NAME, board.getSummonerName());
 		vo.put(BOARD_PLAY_TIME, board.getPlayTime());
 		vo.put(BOARD_WRITE_TIME, format.format(board.getWriteTime()));
 
