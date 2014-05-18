@@ -8,7 +8,7 @@ import com.iris.vo.BoardAndRepleVO;
 
 public interface BoardService {
 
-	public List<Map<String,Object>> findAll();
+	public List<Map<String,Object>> findAll(String rank,String position,String playTime);
 	public List<Map<String,Object>> findMyAll(String faceBookId);
 	public Map<String, Object> findOne(int id);
 }

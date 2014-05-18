@@ -11,6 +11,7 @@ import com.iris.dao.BoardDao;
 import com.iris.dao.UserDao;
 import com.iris.entities.Board;
 import com.iris.entities.User;
+import com.iris.utils.BoardQueryDsl;
 import com.iris.vo.BoardAndRepleVO;
 import com.iris.vo.BoardVO;
 
@@ -22,10 +23,12 @@ public class BoardServiceImpl implements BoardService{
 	BoardDao boardDao;
 	@Autowired
 	UserDao userDao;
+	@Autowired
+	BoardQueryDsl boardQueryDsl;
 	
 	@Override
-	public List<Map<String,Object>> findAll() {
-		List<Board> boardList = boardDao.findAll();
+	public List<Map<String,Object>> findAll(String rank,String position,String playTime) {
+		List<Board> boardList = boardQueryDsl.findAll(rank,position,playTime);
 		BoardVO boardVO = new BoardVO();
 		return boardVO.vo(boardList);
 	}

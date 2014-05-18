@@ -19,7 +19,6 @@ public class BoardServiceImplTest {
 	
 	@Test
 	public void findAll(){
-		boardService.findAll();
 	}
 	
 }

@@ -20,8 +20,14 @@ public class BoardController {
 
     @RequestMapping(value = "/board/findAll", method = RequestMethod.GET)
     @ResponseBody
-    public Object findAll() throws ParseException {
-        return boardService.findAll();
+    public Object findAll(@RequestParam(value = "rank",defaultValue="") String rank,
+    						@RequestParam(value = "position",defaultValue="") String position,
+    						@RequestParam(value = "playTime",defaultValue="") String playTime) throws ParseException {
+    	
+    	System.err.println("@@@@@@@@@@@  position  :  " + position);
+    	System.err.println("@@@@@@@@@@@  playTime  :  " + playTime);
+    	
+        return boardService.findAll(rank,position,playTime);
     }
     
     @RequestMapping(value = "/board/findMyAll", method = RequestMethod.GET)
