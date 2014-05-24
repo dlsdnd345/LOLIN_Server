@@ -11,18 +11,18 @@ import com.iris.entities.Reple;
 
 public class BoardAndRepleVO {
 	
-	private static final String BOARD_ID = "boardId";
-	private static final String TITLE = "title";
-	private static final String BOARD_CONTENT = "boardContent";
-	private static final String POSITION = "position";
-	private static final String RANK = "rank";
-	private static final String BOARD_WRITE_TIME = "boardWriteTime";
-	private static final String BOARD_PLAY_TIME = "boardPlayTime";
-	private static final String REPLE_LIST = "repleList";
-	private static final String REPLE_ID = "repleId";
-	private static final String USER_NAME = "userName";
-	private static final String REPLE_CONTENT = "repleContent";
-	private static final String WRITE_TIME = "writeTime";
+	private static final String BOARD_ID 				= "id";
+	private static final String TITLE 				= "title";
+	private static final String BOARD_CONTENT 		= "content";
+	private static final String POSITION 				= "position";
+	private static final String RANK 					= "rank";
+	private static final String BOARD_WRITE_TIME 		= "boardWriteTime";
+	private static final String BOARD_PLAY_TIME 		= "playTime";
+	private static final String REPLE_LIST 			= "repleList";
+	private static final String USER_NAME 			= "userName";
+	private static final String REPLE_CONTENT 		= "repleContent";
+	private static final String WRITE_TIME 			= "writeTime";
+	private static final String SUMMONER_NAME 		= "summonerName";
 	
 	public Map<String,Object> vo (Board board){
 		
@@ -37,7 +37,8 @@ public class BoardAndRepleVO {
 		vo.put(POSITION, board.getPosition());
 		vo.put(BOARD_PLAY_TIME, board.getPlayTime());
 		vo.put(BOARD_WRITE_TIME, format.format(board.getWriteTime()));
-
+		vo.put(SUMMONER_NAME, board.getAddUsers().getSummonerName());
+		
 		Map<String,Object> repleMap = new HashMap<>();
 		
 		List<Reple> repleList =  board.getAddReple();
@@ -45,9 +46,9 @@ public class BoardAndRepleVO {
 		
 		for (Reple reple : repleList) {
 			
-			repleMap.put(REPLE_ID, reple.getId());
-			repleMap.put(USER_NAME, reple.getContent());
-			repleMap.put(REPLE_CONTENT, reple.getUserName());
+			repleMap.put(BOARD_ID, reple.getId());
+			repleMap.put(REPLE_CONTENT, reple.getContent());
+			repleMap.put(USER_NAME, reple.getUserName());
 			repleMap.put(WRITE_TIME, format.format(reple.getWriteTime()));
 			repleListResult.add(repleMap);
 		}

@@ -14,7 +14,7 @@ public List<Reple> vo(List<Reple> repleList){
 		for (Reple reple : repleList) {
 			Reple repleResult = new Reple();
 			repleResult.setContent(reple.getContent());
-			repleResult.setUserName(reple.getContent());
+			repleResult.setUserName(reple.getUserName());
 			repleResult.setWriteTime(reple.getWriteTime());
 			repleListResult.add(repleResult);
 		}

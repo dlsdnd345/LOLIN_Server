@@ -24,9 +24,6 @@ public class BoardController {
     						@RequestParam(value = "position",defaultValue="") String position,
     						@RequestParam(value = "playTime",defaultValue="") String playTime) throws ParseException {
     	
-    	System.err.println("@@@@@@@@@@@  position  :  " + position);
-    	System.err.println("@@@@@@@@@@@  playTime  :  " + playTime);
-    	
         return boardService.findAll(rank,position,playTime);
     }
     
