@@ -11,4 +11,5 @@ public interface BoardService {
 	public List<Map<String,Object>> findAll(String rank,String position,String playTime);
 	public List<Map<String,Object>> findMyAll(String faceBookId);
 	public Map<String, Object> findOne(int id);
+	public String save(String faceBookId ,String title,String content,String position,String rank,String playTime);
 }

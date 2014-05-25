@@ -21,7 +21,7 @@ public class BoardVO {
 
 	public List<Map<String,Object>> vo(List<Board> boardList){
 
-		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		
 		List<Map<String,Object>> boardListResult = new ArrayList<Map<String,Object>>();
 

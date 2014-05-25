@@ -1,5 +1,6 @@
 package com.iris.service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -19,6 +20,8 @@ import com.iris.vo.BoardVO;
 @Transactional
 public class BoardServiceImpl implements BoardService{
 
+	private static final String SAVE = "저장이 완료 되었습니다.";
+	
 	@Autowired
 	BoardDao boardDao;
 	@Autowired
@@ -49,6 +52,26 @@ public class BoardServiceImpl implements BoardService{
 		BoardVO boardVO = new BoardVO();
 		return boardVO.vo(boardList);
 		
+	}
+
+	@Override
+	public String save(String faceBookId ,String title, String content, String position,String rank, String playTime) {
+		
+		User user = userDao.findByFacebookId(faceBookId);
+		
+		Board board = new Board();
+		
+		board.setTitle(title);
+		board.setContent(content);
+		board.setPosition(position);
+		board.setRank(rank);
+		board.setPlayTime(playTime);
+		board.setWriteTime(new Date());
+		board.setAddUsers(user);
+		
+		boardDao.save(board);
+		
+		return SAVE;
 	}
 	
 	
