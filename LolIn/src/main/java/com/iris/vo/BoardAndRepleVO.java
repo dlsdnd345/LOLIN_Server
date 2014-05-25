@@ -12,6 +12,8 @@ import com.iris.entities.Reple;
 public class BoardAndRepleVO {
 	
 	private static final String BOARD_ID 				= "id";
+	private static final String REPLE_ID 				= "id";
+	private static final String FACEBOOK_ID 			= "facebookId";
 	private static final String TITLE 				= "title";
 	private static final String BOARD_CONTENT 		= "content";
 	private static final String POSITION 				= "position";
@@ -39,14 +41,14 @@ public class BoardAndRepleVO {
 		vo.put(BOARD_WRITE_TIME, format.format(board.getWriteTime()));
 		vo.put(SUMMONER_NAME, board.getAddUsers().getSummonerName());
 		
-		Map<String,Object> repleMap = new HashMap<>();
 		
 		List<Reple> repleList =  board.getAddReple();
 		List<Map<String,Object>> repleListResult = new ArrayList<Map<String,Object>>();
 		
 		for (Reple reple : repleList) {
-			
-			repleMap.put(BOARD_ID, reple.getId());
+			Map<String,Object> repleMap = new HashMap<>();
+			repleMap.put(REPLE_ID, reple.getId());
+			repleMap.put(FACEBOOK_ID, board.getAddUsers().getFacebookId());
 			repleMap.put(REPLE_CONTENT, reple.getContent());
 			repleMap.put(USER_NAME, reple.getUserName());
 			repleMap.put(WRITE_TIME, format.format(reple.getWriteTime()));
