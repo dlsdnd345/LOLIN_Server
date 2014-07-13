@@ -13,6 +13,7 @@ public class BoardAndRepleVO {
 	
 	private static final String BOARD_ID 				= "id";
 	private static final String REPLE_ID 				= "id";
+	private static final String USER_ID 				= "userId";
 	private static final String FACEBOOK_ID 			= "facebookId";
 	private static final String TITLE 				= "title";
 	private static final String BOARD_CONTENT 		= "content";
@@ -34,6 +35,7 @@ public class BoardAndRepleVO {
 		Map<String,Object> vo = new HashMap<>();
 		
 		vo.put(BOARD_ID, String.valueOf(board.getId()));
+		vo.put(USER_ID, String.valueOf(board.getAddUsers().getId()));
 		vo.put(RANK, board.getRank());
 		vo.put(TITLE, board.getTitle());
 		vo.put(BOARD_CONTENT, board.getContent());
