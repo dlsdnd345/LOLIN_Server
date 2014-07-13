@@ -63,6 +63,9 @@ public class Board implements Serializable {
 	@Column(name = "playTime")
 	private String playTime;
 
+	@Column(name = "tea")
+	private String tea;
+	
 	@OneToMany(mappedBy="addBoards")
 	private List<Reple> addReple;
 
@@ -124,6 +127,14 @@ public class Board implements Serializable {
 
 	public void setPlayTime(String playTime) {
 		this.playTime = playTime;
+	}
+
+	public String getTea() {
+		return tea;
+	}
+
+	public void setTea(String tea) {
+		this.tea = tea;
 	}
 
 	public List<Reple> getAddReple() {

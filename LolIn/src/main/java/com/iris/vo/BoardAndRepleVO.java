@@ -25,6 +25,7 @@ public class BoardAndRepleVO {
 	private static final String REPLE_CONTENT 		= "repleContent";
 	private static final String WRITE_TIME 			= "writeTime";
 	private static final String SUMMONER_NAME 		= "summonerName";
+	private static final String TEA 					= "tea";
 	
 	public Map<String,Object> vo (Board board){
 		
@@ -40,7 +41,7 @@ public class BoardAndRepleVO {
 		vo.put(BOARD_PLAY_TIME, board.getPlayTime());
 		vo.put(BOARD_WRITE_TIME, format.format(board.getWriteTime()));
 		vo.put(SUMMONER_NAME, board.getAddUsers().getSummonerName());
-		
+		vo.put(TEA, board.getTea());
 		
 		List<Reple> repleList =  board.getAddReple();
 		List<Map<String,Object>> repleListResult = new ArrayList<Map<String,Object>>();

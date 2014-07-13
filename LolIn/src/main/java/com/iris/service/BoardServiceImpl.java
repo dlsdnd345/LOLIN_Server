@@ -55,11 +55,16 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
-	public String save(String faceBookId ,String title, String content, String position,String rank, String playTime) {
+	public String save(int id,String faceBookId ,String title, String content, String position,String rank, String playTime , String tea) {
 		
 		User user = userDao.findByFacebookId(faceBookId);
+		Board board = null;
 		
-		Board board = new Board();
+		if(id  == -1){
+			board = new Board();
+		}else{
+			board = boardDao.findOne(id);
+		}
 		
 		board.setTitle(title);
 		board.setContent(content);
@@ -68,6 +73,7 @@ public class BoardServiceImpl implements BoardService{
 		board.setPlayTime(playTime);
 		board.setWriteTime(new Date());
 		board.setAddUsers(user);
+		board.setTea(tea);
 		
 		boardDao.save(board);
 		
