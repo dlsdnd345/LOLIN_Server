@@ -19,6 +19,7 @@ public class BoardVO {
 	private static final String RANK 					= "rank";
 	private static final String WRITE_TIME 			= "writeTime";
 	private static final String SUMMONER_NAME 		= "summonerName";
+	private static final String REPLE_COUNT	 		= "repleCount";
 
 	public List<Map<String,Object>> vo(List<Board> boardList){
 
@@ -39,6 +40,7 @@ public class BoardVO {
 			vo.put(RANK, board.getRank());
 			vo.put(WRITE_TIME, format.format(board.getWriteTime()));
 			vo.put(SUMMONER_NAME, board.getAddUsers().getSummonerName());
+			vo.put(REPLE_COUNT, board.getAddReple().size());
 			
 			boardListResult.add(vo);
 		}

@@ -6,4 +6,5 @@ import com.iris.entities.Reple;
 
 public interface RepleService {
 	public List<Reple> findAll();
+	public String save(int boardId , String userName , String content);
 }
