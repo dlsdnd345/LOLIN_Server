@@ -21,6 +21,7 @@ import com.iris.vo.BoardVO;
 public class BoardServiceImpl implements BoardService{
 
 	private static final String SAVE = "저장이 완료 되었습니다.";
+	private static final String DELETE = "삭제가 완료 되었습니다.";
 	
 	@Autowired
 	BoardDao boardDao;
@@ -78,6 +79,16 @@ public class BoardServiceImpl implements BoardService{
 		boardDao.save(board);
 		
 		return SAVE;
+	}
+
+	@Override
+	public String delete(int id) {
+		
+		Board board = new Board();
+		board.setId(id);
+		boardDao.delete(board);
+		
+		return DELETE;
 	}
 	
 	

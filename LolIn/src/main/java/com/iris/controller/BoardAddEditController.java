@@ -32,4 +32,10 @@ public class BoardAddEditController {
     	return boardService.save(id,faceBookId,title, content, position, rank, playTime,tea);
     }
 
+    @RequestMapping(value = "/board/delete", method = RequestMethod.GET)
+    @ResponseBody
+    public Object delete(@RequestParam(value = "id") int id) throws ParseException {
+        return boardService.delete(id);
+    }
+    
 }
