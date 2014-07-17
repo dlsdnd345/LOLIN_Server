@@ -1,6 +1,7 @@
 package com.iris.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.iris.dao.RepleDao;
 import com.iris.entities.Board;
 import com.iris.entities.Reple;
+import com.iris.utils.RepleQueryDsl;
 import com.iris.vo.RepleVO;
 
 @Service
@@ -19,9 +21,11 @@ public class RepleServiceImpl implements RepleService {
 	
 	@Autowired
 	RepleDao repleDao;
+	@Autowired
+	RepleQueryDsl repleQueryDsl;
 	
 	@Override
-	public List<Reple> findAll() {
+	public List<Map<String,Object>> findAll() {
 		List<Reple> repleList = repleDao.findAll();
 		RepleVO repleVO = new RepleVO();
 		return repleVO.vo(repleList);
@@ -40,6 +44,14 @@ public class RepleServiceImpl implements RepleService {
 		repleDao.save(reple);
 		
 		return SAVE;
+	}
+
+	@Override
+	public List<Map<String,Object>> findById(int boardId) {
+		
+		List<Reple> repleList = repleQueryDsl.findById(boardId);
+		RepleVO repleVO = new RepleVO();
+		return repleVO.vo(repleList);
 	}
 
 }

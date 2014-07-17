@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.iris.service.RepleService;
@@ -20,5 +21,11 @@ public class RepleController {
 	@ResponseBody
 	public Object selectAll() throws ParseException{
 		return repleService.findAll();
+	}
+	
+	@RequestMapping(value = "/reple/findOne", method = RequestMethod.GET)
+	@ResponseBody
+	public Object findOne(@RequestParam(value = "boardId") int boardId) throws ParseException{
+		return repleService.findById(boardId);
 	}
 }

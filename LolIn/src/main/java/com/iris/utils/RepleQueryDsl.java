@@ -22,5 +22,11 @@ public class RepleQueryDsl extends QueryDslRepositorySupport {
         List<Reple> repleList = from(reple).where(reple.content.eq(content)).list(reple);
         return repleList;
     }
+    
+    public List<Reple> findById(int boardId) {
+    	QReple reple = QReple.reple;
+        List<Reple> repleList = from(reple).where(reple.addBoards.id.eq(boardId)).list(reple);
+        return repleList;
+    }
 
 }
