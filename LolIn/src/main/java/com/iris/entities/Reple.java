@@ -30,8 +30,12 @@ public class Reple implements Serializable{
 	@Column(name = "content")
 	private String content;
 
+	@Column(name = "facebookId")
+	private String facebookId;
+	
 	@Column(name = "writeTime")
 	private Date writeTime;
+	
 	
 	@ManyToOne
 	@JoinColumn(name="boardId")
@@ -60,6 +64,14 @@ public class Reple implements Serializable{
 
 	public void setContent(String content) {
 		this.content = content;
+	}
+	
+	public String getFacebookId() {
+		return facebookId;
+	}
+
+	public void setFacebookId(String facebookId) {
+		this.facebookId = facebookId;
 	}
 
 	public Date getWriteTime() {

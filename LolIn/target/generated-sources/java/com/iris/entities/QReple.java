@@ -26,6 +26,8 @@ public class QReple extends EntityPathBase<Reple> {
 
     public final StringPath content = createString("content");
 
+    public final StringPath facebookId = createString("facebookId");
+
     public final NumberPath<Integer> id = createNumber("id", Integer.class);
 
     public final StringPath userName = createString("userName");

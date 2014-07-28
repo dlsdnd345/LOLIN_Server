@@ -25,7 +25,7 @@ public List<Map<String,Object>> vo(List<Reple> repleList){
 		for (Reple reple : repleList) {
 			Map<String,Object> vo = new HashMap<>();
 			vo.put(REPLE_ID, reple.getId());
-			vo.put(FACEBOOK_ID, reple.getAddBoards().getAddUsers().getFacebookId());
+			vo.put(FACEBOOK_ID, reple.getFacebookId());
 			vo.put(REPLE_CONTENT, reple.getContent());
 			vo.put(USER_NAME, reple.getUserName());
 			vo.put(WRITE_TIME, format.format(reple.getWriteTime()));
