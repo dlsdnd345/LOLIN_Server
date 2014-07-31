@@ -15,6 +15,8 @@ import com.google.android.gcm.server.Message;
 import com.google.android.gcm.server.Result;
 import com.google.android.gcm.server.Sender;
 import com.iris.dao.BoardDao;
+import com.iris.dao.UserDao;
+import com.iris.entities.Board;
 import com.iris.entities.User;
 import com.iris.service.BoardService;
 import com.iris.service.UserService;
@@ -25,12 +27,16 @@ public class GCMController {
 	private static final String API_KEY = "AIzaSyDGa-jbPMmcpym3gyBWOfr4Mca-oc5A204"; 
 	private static final String PUSH_SUCESS_MESSAGE = "푸시 전송에 성공 하였습니다.";
 	
+	@Autowired
+	BoardDao boardDao;
 	
     @RequestMapping(value = "/gcm/sendReple", method = RequestMethod.GET)
     @ResponseBody
     public Object sendPush(@RequestParam(value = "os") String os,
-    						@RequestParam(value = "regId") String regId,
+    						@RequestParam(value = "boardId") String boardId,
     						@RequestParam(value = "reple") String reple) throws ParseException {
+    	
+    	Board board = boardDao.findOne(Integer.parseInt(boardId));
     	
     	if(os.equals("android")){ // Android
     		
@@ -41,7 +47,7 @@ public class GCMController {
     		
 			Result result = null;
     		try {
-    			result = sender.send(msg, regId, 5);			//푸시 전송
+    			result = sender.send(msg, board.getAddUsers().getPushId(), 5);			//푸시 전송
     		} catch (IOException e) {
     			e.printStackTrace();
     		}

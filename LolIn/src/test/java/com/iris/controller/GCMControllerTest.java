@@ -47,8 +47,8 @@ public class GCMControllerTest {
 
 	        mockMvc.perform(get("/gcm/sendReple")
 	        		.param("os", "android")
-	        		.param("regId", "APA91bEo4wLfiybUbYbFoELKzDwhx6A_QdCeJXsoT7FdCyLpaT4GdwZ12dVoHn3GVRj4nzAKjtpej1Cj1JFeseqd77IvAjKhny1Bv-OnsiT5PACOgnip0iIUQ2bzwQEAi16GvqMP1qRKDgY-ibIqaRBJ8v6S0tO6cQ")
-	        		.param("reple", "제발 가라 제발@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+	        		.param("boardId", "8")
+	        		.param("reple", "dlsdnd345 친추 하시고 메세지 부탁드려요.")
 	        		.session(session)).andExpect(status().isOk())
 	                .andDo(print())
 	                .andReturn();

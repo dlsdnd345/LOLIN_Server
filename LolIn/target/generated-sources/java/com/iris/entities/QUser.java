@@ -26,6 +26,8 @@ public class QUser extends EntityPathBase<User> {
 
     public final NumberPath<Integer> id = createNumber("id", Integer.class);
 
+    public final StringPath pushId = createString("pushId");
+
     public final StringPath summonerName = createString("summonerName");
 
     public final DateTimePath<java.util.Date> writeTime = createDateTime("writeTime", java.util.Date.class);

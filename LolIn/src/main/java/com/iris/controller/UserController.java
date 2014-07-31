@@ -30,8 +30,12 @@ public class UserController {
     @RequestMapping(value = "/user/save", method = RequestMethod.GET)
     @ResponseBody
     public Object save(@RequestParam(value = "faceBookId") String faceBookId ,
-    					@RequestParam(value = "summonerName") String summonerName) throws ParseException {
-        return userService.save(faceBookId,summonerName);
+    					@RequestParam(value = "summonerName") String summonerName,
+    					@RequestParam(value = "pushId") String pushId) throws ParseException {
+    	
+    	System.out.println("################  pushId  :  " + pushId);
+    	
+        return userService.save(faceBookId,summonerName,pushId);
     }
 
 }

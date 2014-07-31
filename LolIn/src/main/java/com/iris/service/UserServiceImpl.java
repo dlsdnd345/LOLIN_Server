@@ -29,7 +29,7 @@ public class UserServiceImpl implements UserService {
 
 
 	@Override
-	public String save(String facebookId,String summonerName) {
+	public String save(String facebookId,String summonerName,String pushId) {
 		User user = userDao.findByFacebookId(facebookId);
 		if(user == null){
 			user = new User();
@@ -38,6 +38,7 @@ public class UserServiceImpl implements UserService {
 		user.setSummonerName(summonerName);
 		user.setFacebookId(facebookId);
 		user.setWriteTime(new Date());
+		user.setPushId(pushId);
 		
 		userDao.save(user);
 		return "저장이 완료되었습니다.";

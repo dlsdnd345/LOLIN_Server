@@ -50,6 +50,9 @@ public class User implements Serializable {
 	
 	@Column(name = "summonerName")
 	private String summonerName;
+	
+	@Column(name = "pushId")
+	private String pushId;
 
 	@Column(name = "writeTime")
 	private Date writeTime;
@@ -79,6 +82,14 @@ public class User implements Serializable {
 
 	public void setSummonerName(String summonerName) {
 		this.summonerName = summonerName;
+	}
+	
+	public String getPushId() {
+		return pushId;
+	}
+
+	public void setPushId(String pushId) {
+		this.pushId = pushId;
 	}
 
 	public Date getWriteTime() {
