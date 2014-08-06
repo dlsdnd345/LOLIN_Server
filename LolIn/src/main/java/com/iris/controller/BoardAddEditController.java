@@ -20,7 +20,7 @@ public class BoardAddEditController {
     
     @RequestMapping(value = "/board/save", method = RequestMethod.GET)
     @ResponseBody
-    public Object save(@RequestParam(value = "id") int id,
+    public Object save(@RequestParam(value = "id") String id,
     					@RequestParam(value = "facebookId") String faceBookId,
     					@RequestParam(value = "title") String title,
     					@RequestParam(value = "content") String content,

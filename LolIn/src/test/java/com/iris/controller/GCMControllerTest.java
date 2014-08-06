@@ -47,8 +47,10 @@ public class GCMControllerTest {
 
 	        mockMvc.perform(get("/gcm/sendReple")
 	        		.param("os", "android")
-	        		.param("boardId", "8")
-	        		.param("reple", "dlsdnd345 친추 하시고 메세지 부탁드려요.")
+	        		.param("boardId", "9")
+	        		.param("summernerName", "dlsdnd345")
+	        		.param("reple", "dlsdnd345 친추 하고 연락 주세요.")
+	        		.param("facebookId", "608627989252640")
 	        		.session(session)).andExpect(status().isOk())
 	                .andDo(print())
 	                .andReturn();

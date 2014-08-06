@@ -15,8 +15,10 @@ import com.google.android.gcm.server.Message;
 import com.google.android.gcm.server.Result;
 import com.google.android.gcm.server.Sender;
 import com.iris.dao.BoardDao;
+import com.iris.dao.RepleDao;
 import com.iris.dao.UserDao;
 import com.iris.entities.Board;
+import com.iris.entities.Reple;
 import com.iris.entities.User;
 import com.iris.service.BoardService;
 import com.iris.service.UserService;
@@ -29,12 +31,16 @@ public class GCMController {
 	
 	@Autowired
 	BoardDao boardDao;
+	@Autowired
+	RepleDao repleDao;
 	
     @RequestMapping(value = "/gcm/sendReple", method = RequestMethod.GET)
     @ResponseBody
     public Object sendPush(@RequestParam(value = "os") String os,
     						@RequestParam(value = "boardId") String boardId,
-    						@RequestParam(value = "reple") String reple) throws ParseException {
+    						@RequestParam(value = "summernerName") String summernerName,
+    						@RequestParam(value = "facebookId") String facebookId,
+    						@RequestParam(value = "reple") String message) throws ParseException {
     	
     	Board board = boardDao.findOne(Integer.parseInt(boardId));
     	
@@ -42,7 +48,10 @@ public class GCMController {
     		
         	Sender sender = new Sender(API_KEY);				//푸시 보내는 객체 생성
     		Message.Builder builder = new Message.Builder();	//푸시 메시지 만드는 객체
-    		builder.addData("message", reple);	
+    		builder.addData("message", message);
+    		builder.addData("summernerName", summernerName);
+    		builder.addData("boardId", boardId);
+    		builder.addData("facebookId", facebookId);
     		Message msg = builder.build();
     		
 			Result result = null;
