@@ -26,7 +26,7 @@ import com.iris.service.UserService;
 @Controller
 public class GCMController {
 
-	private static final String API_KEY = "AIzaSyDGa-jbPMmcpym3gyBWOfr4Mca-oc5A204"; 
+	private static final String API_KEY = "AIzaSyCJoQvjxlp_LQ3H0M5WtF96V4g2LkGm6dQ"; 
 	private static final String PUSH_SUCESS_MESSAGE = "푸시 전송에 성공 하였습니다.";
 	
 	@Autowired
@@ -48,15 +48,26 @@ public class GCMController {
     		
         	Sender sender = new Sender(API_KEY);				//푸시 보내는 객체 생성
     		Message.Builder builder = new Message.Builder();	//푸시 메시지 만드는 객체
+    		builder.collapseKey(String.valueOf(Math.random() % 100 + 1));
     		builder.addData("message", message);
     		builder.addData("summernerName", summernerName);
     		builder.addData("boardId", boardId);
     		builder.addData("facebookId", facebookId);
+    		builder.delayWhileIdle(true);
+    		builder.timeToLive(3);
     		Message msg = builder.build();
     		
 			Result result = null;
     		try {
     			result = sender.send(msg, board.getAddUsers().getPushId(), 5);			//푸시 전송
+    			
+    			 if (result.getMessageId() != null) {
+                     System.out.println("Send success");
+                } else {
+                     String error = result.getErrorCodeName();
+                     System.out.println("Send fail : " + error);
+                }
+    			
     		} catch (IOException e) {
     			e.printStackTrace();
     		}
@@ -67,5 +78,5 @@ public class GCMController {
     	
     	return PUSH_SUCESS_MESSAGE;
     }
-
+    
 }

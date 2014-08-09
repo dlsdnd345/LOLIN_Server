@@ -47,7 +47,7 @@ public class GCMControllerTest {
 
 	        mockMvc.perform(get("/gcm/sendReple")
 	        		.param("os", "android")
-	        		.param("boardId", "9")
+	        		.param("boardId", "10")
 	        		.param("summernerName", "dlsdnd345")
 	        		.param("reple", "dlsdnd345 친추 하고 연락 주세요.")
 	        		.param("facebookId", "608627989252640")
