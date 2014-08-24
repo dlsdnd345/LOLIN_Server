@@ -2,7 +2,6 @@ package com.iris.controller;
 
 import java.io.IOException;
 import java.text.ParseException;
-import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,12 +15,7 @@ import com.google.android.gcm.server.Result;
 import com.google.android.gcm.server.Sender;
 import com.iris.dao.BoardDao;
 import com.iris.dao.RepleDao;
-import com.iris.dao.UserDao;
 import com.iris.entities.Board;
-import com.iris.entities.Reple;
-import com.iris.entities.User;
-import com.iris.service.BoardService;
-import com.iris.service.UserService;
 
 @Controller
 public class GCMController {
