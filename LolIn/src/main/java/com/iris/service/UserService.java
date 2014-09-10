@@ -6,7 +6,6 @@ import com.iris.entities.User;
 
 public interface UserService {
 
-	public Map<String, Object> findOne(String faceBookId);
-	public String save(String faceBookId, String summonerName);
-	public String save(String faceBookId, String summonerName,String pushId);
+	public Map<String, Object> findOne(String faceBookId,String hash);
+	public String save(String faceBookId, String summonerName,String pushId,String hash);
 }

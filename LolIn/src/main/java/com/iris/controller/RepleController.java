@@ -25,7 +25,8 @@ public class RepleController {
 	
 	@RequestMapping(value = "/reple/findOne", method = RequestMethod.GET)
 	@ResponseBody
-	public Object findOne(@RequestParam(value = "boardId") int boardId) throws ParseException{
-		return repleService.findById(boardId);
+	public Object findOne(@RequestParam(value = "boardId") int boardId,
+							@RequestParam(value = "hash") String hash) throws ParseException{
+		return repleService.findById(boardId,hash);
 	}
 }

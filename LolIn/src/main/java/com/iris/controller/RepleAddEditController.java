@@ -23,15 +23,17 @@ public class RepleAddEditController {
     public Object save(@RequestParam(value = "boardId") int boardId,
     					@RequestParam(value = "userName") String userName,
     					@RequestParam(value = "content") String content,
-    					@RequestParam(value = "facebookId") String facebookId) throws ParseException {
+    					@RequestParam(value = "facebookId") String facebookId,
+    					@RequestParam(value = "hash") String hash) throws ParseException {
     	
-    	return repleService.save(boardId,userName,content,facebookId);
+    	return repleService.save(boardId,userName,content,facebookId,hash);
     }
     
     @RequestMapping(value = "/reple/delete", method = RequestMethod.GET)
     @ResponseBody
-    public Object delete(@RequestParam(value = "repleId") int repleId) throws ParseException {
-    	return repleService.delete(repleId);
+    public Object delete(@RequestParam(value = "repleId") int repleId,
+    						@RequestParam(value = "hash") String hash) throws ParseException {
+    	return repleService.delete(repleId,hash);
     }
 	
 }

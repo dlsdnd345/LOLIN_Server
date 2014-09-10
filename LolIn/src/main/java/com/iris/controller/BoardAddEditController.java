@@ -20,22 +20,24 @@ public class BoardAddEditController {
     
     @RequestMapping(value = "/board/save", method = RequestMethod.GET)
     @ResponseBody
-    public Object save(@RequestParam(value = "id") String id,
+    public Object save(@RequestParam(value = "boardId") String boardId,
     					@RequestParam(value = "facebookId") String faceBookId,
     					@RequestParam(value = "title") String title,
     					@RequestParam(value = "content") String content,
     					@RequestParam(value = "position") String position,
     					@RequestParam(value = "rank") String rank,
     					@RequestParam(value = "playTime") String playTime,
-    					@RequestParam(value = "tea") String tea) throws ParseException {
+    					@RequestParam(value = "tea") String tea,
+    					@RequestParam(value = "hash") String hash) throws ParseException {
     	
-    	return boardService.save(id,faceBookId,title, content, position, rank, playTime,tea);
+    	return boardService.save(boardId,faceBookId,title, content, position, rank, playTime,tea,hash);
     }
 
     @RequestMapping(value = "/board/delete", method = RequestMethod.GET)
     @ResponseBody
-    public Object delete(@RequestParam(value = "id") int id) throws ParseException {
-        return boardService.delete(id);
+    public Object delete(@RequestParam(value = "boardId") int boardId,
+    					@RequestParam(value = "hash") String hash) throws ParseException {
+        return boardService.delete(boardId,hash);
     }
     
 }

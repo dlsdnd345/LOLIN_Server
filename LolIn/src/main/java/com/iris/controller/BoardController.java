@@ -22,21 +22,24 @@ public class BoardController {
     @ResponseBody
     public Object findAll(@RequestParam(value = "rank",defaultValue="") String rank,
     						@RequestParam(value = "position",defaultValue="") String position,
-    						@RequestParam(value = "playTime",defaultValue="") String playTime) throws ParseException {
+    						@RequestParam(value = "playTime",defaultValue="") String playTime,
+    						@RequestParam(value = "hash") String hash) throws ParseException {
     	
-        return boardService.findAll(rank,position,playTime);
+        return boardService.findAll(rank,position,playTime,hash);
     }
     
     @RequestMapping(value = "/board/findMyAll", method = RequestMethod.GET)
     @ResponseBody
-    public Object findMyAll(@RequestParam(value = "faceBookId") String faceBookId) throws ParseException {
-        return boardService.findMyAll(faceBookId);
+    public Object findMyAll(@RequestParam(value = "faceBookId") String faceBookId,
+    						  @RequestParam(value = "hash") String hash) throws ParseException {
+        return boardService.findMyAll(faceBookId,hash);
     }
     
     @RequestMapping(value = "/board/findOne", method = RequestMethod.GET)
     @ResponseBody
-    public Object findOne(@RequestParam(value = "id") int id) throws ParseException {
-        return boardService.findOne(id);
+    public Object findOne(@RequestParam(value = "boardId") int boardId,
+    						@RequestParam(value = "hash") String hash) throws ParseException {
+        return boardService.findOne(boardId,hash);
     }
 
 }

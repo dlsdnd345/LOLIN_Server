@@ -14,6 +14,7 @@ import com.iris.dao.BoardDao;
 import com.iris.entities.User;
 import com.iris.service.BoardService;
 import com.iris.service.UserService;
+import com.iris.utils.SignatureUtil;
 
 @Controller
 public class UserController {
@@ -23,25 +24,20 @@ public class UserController {
 
     @RequestMapping(value = "/user/findOne", method = RequestMethod.GET)
     @ResponseBody
-    public Object findOne(@RequestParam(value = "faceBookId") String facebookId) throws ParseException {
-        return userService.findOne(facebookId);
+    public Object findOne(@RequestParam(value = "faceBookId") String facebookId,
+    						@RequestParam(value = "hash") String hash) throws ParseException {
+    	
+        return userService.findOne(facebookId,hash);
     }
     
     @RequestMapping(value = "/user/save", method = RequestMethod.GET)
     @ResponseBody
     public Object save(@RequestParam(value = "faceBookId") String faceBookId ,
     					@RequestParam(value = "summonerName") String summonerName,
-    					@RequestParam(value = "pushId") String pushId) throws ParseException {
+    					@RequestParam(value = "pushId") String pushId,
+    					@RequestParam(value = "hash") String hash) throws ParseException {
     	
-        return userService.save(faceBookId,summonerName,pushId);
-    }
-    
-    @RequestMapping(value = "/user/saveDefault", method = RequestMethod.GET)
-    @ResponseBody
-    public Object save(@RequestParam(value = "faceBookId") String faceBookId ,
-    					@RequestParam(value = "summonerName") String summonerName) throws ParseException {
-    	
-        return userService.save(faceBookId,summonerName);
+        return userService.save(faceBookId,summonerName,pushId,hash);
     }
 
 }

@@ -8,11 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.iris.config.Config;
 import com.iris.dao.BoardDao;
 import com.iris.dao.UserDao;
 import com.iris.entities.Board;
 import com.iris.entities.User;
+import com.iris.libs.TrippleDes;
 import com.iris.utils.BoardQueryDsl;
+import com.iris.utils.SignatureUtil;
 import com.iris.vo.BoardAndRepleVO;
 import com.iris.vo.BoardVO;
 
@@ -30,25 +33,47 @@ public class BoardServiceImpl implements BoardService{
 	@Autowired
 	BoardQueryDsl boardQueryDsl;
 	
+	TrippleDes trippleDes;
+	
 	@Override
-	public List<Map<String,Object>> findAll(String rank,String position,String playTime) {
+	public List<Map<String,Object>> findAll(String rank,String position,String playTime,String hash) {
+		
+		if(!SignatureUtil.compareHash(rank+position+playTime+Config.KEY.SECRET, hash)){
+			return null;
+		}
+		
 		List<Board> boardList = boardQueryDsl.findAll(rank,position,playTime);
 		BoardVO boardVO = new BoardVO();
 		return boardVO.vo(boardList);
 	}
 
 	@Override
-	public Map<String, Object> findOne(int id) {
+	public Map<String, Object> findOne(int boardId ,String hash) {
 		
-		Board board = boardDao.findOne(id);
+		if(!SignatureUtil.compareHash(boardId+Config.KEY.SECRET, hash)){
+			return null;
+		}
+		
+		Board board = boardDao.findOne(boardId);
 		BoardAndRepleVO boardAndRepleVO = new BoardAndRepleVO();
 		return boardAndRepleVO.vo(board);
 	}
 
 	@Override
-	public List<Map<String, Object>> findMyAll(String faceBookId) {
+	public List<Map<String, Object>> findMyAll(String facebookId,String hash) {
 		
-		User user = userDao.findByFacebookId(faceBookId);
+		if(!SignatureUtil.compareHash(facebookId+Config.KEY.SECRET, hash)){
+			return null;
+		}
+		
+		try {
+			trippleDes = new TrippleDes();
+			facebookId = trippleDes.decrypt(facebookId);
+		} catch (Exception e1) {
+			e1.printStackTrace();
+		}
+		
+		User user = userDao.findByFacebookId(facebookId);
 		List<Board> boardList = boardDao.findByAddUsers(user);
 		BoardVO boardVO = new BoardVO();
 		return boardVO.vo(boardList);
@@ -56,15 +81,27 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
-	public String save(String id,String faceBookId ,String title, String content, String position,String rank, String playTime , String tea) {
+	public String save
+	(String boardId,String facebookId ,String title, String content, String position,String rank, String playTime , String tea, String hash) {
 		
-		User user = userDao.findByFacebookId(faceBookId);
+		if(!SignatureUtil.compareHash(boardId+facebookId+title+content+position+rank+playTime+tea+Config.KEY.SECRET, hash)){
+			return null;
+		}
+		
+		try {
+			trippleDes = new TrippleDes();
+			facebookId = trippleDes.decrypt(facebookId);
+		} catch (Exception e1) {
+			e1.printStackTrace();
+		}
+		
+		User user = userDao.findByFacebookId(facebookId);
 		Board board = null;
 		
-		if(id  == ""){
+		if(boardId  == ""){
 			board = new Board();
 		}else{
-			board = boardDao.findOne(Integer.parseInt(id));
+			board = boardDao.findOne(Integer.parseInt(boardId));
 		}
 		
 		board.setTitle(title);
@@ -82,10 +119,14 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
-	public String delete(int id) {
+	public String delete(int boardId ,String hash) {
+		
+		if(!SignatureUtil.compareHash(boardId+Config.KEY.SECRET, hash)){
+			return null;
+		}
 		
 		Board board = new Board();
-		board.setId(id);
+		board.setId(boardId);
 		boardDao.delete(board);
 		
 		return DELETE;
