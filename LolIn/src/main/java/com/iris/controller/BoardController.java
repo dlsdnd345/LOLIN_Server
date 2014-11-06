@@ -15,6 +15,9 @@ import com.iris.service.BoardService;
 @Controller
 public class BoardController {
 
+	private static final String DEFAULT_PAGE = "1";
+	private static final String DEFAULT_PAGE_SIZE = "3";
+	
     @Autowired
     BoardService boardService;
 
@@ -23,9 +26,11 @@ public class BoardController {
     public Object findAll(@RequestParam(value = "rank",defaultValue="") String rank,
     						@RequestParam(value = "position",defaultValue="") String position,
     						@RequestParam(value = "playTime",defaultValue="") String playTime,
+    						@RequestParam(value = "page",defaultValue=DEFAULT_PAGE) int page,
+    						@RequestParam(value = "pageSize",defaultValue=DEFAULT_PAGE_SIZE) int pageSize,
     						@RequestParam(value = "hash") String hash) throws ParseException {
     	
-        return boardService.findAll(rank,position,playTime,hash);
+        return boardService.findAll(rank,position,playTime,hash,page,pageSize);
     }
     
     @RequestMapping(value = "/board/findMyAll", method = RequestMethod.GET)

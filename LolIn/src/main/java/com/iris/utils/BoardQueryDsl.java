@@ -2,6 +2,7 @@ package com.iris.utils;
 
 import java.util.List;
 
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.support.QueryDslRepositorySupport;
 import org.springframework.stereotype.Repository;
 
@@ -16,7 +17,7 @@ public class BoardQueryDsl extends QueryDslRepositorySupport {
         super(Board.class);
     }
 
-	public List<Board> findAll(String rank , String position , String playTime) {
+	public List<Board> findAll(String rank , String position , String playTime , int page , int pageSize) {
     	QBoard board = QBoard.board;
     	
     	  BooleanExpression conditions = board.id.isNotNull();
@@ -34,7 +35,13 @@ public class BoardQueryDsl extends QueryDslRepositorySupport {
     				.and(board.playTime.eq(playTime));
     	}
     	
-        List<Board> bookList = from(board).where(conditions).orderBy(board.id.desc()).list(board);
+        List<Board> bookList = from(board).where(conditions)
+        					   .offset((page-1)*pageSize)
+        					   .limit(pageSize)
+        					   .orderBy(board.id.desc())
+        					   .list(board);
+
+        
         return bookList;
     }
     

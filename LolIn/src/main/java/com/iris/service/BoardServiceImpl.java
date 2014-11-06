@@ -5,6 +5,10 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -36,13 +40,13 @@ public class BoardServiceImpl implements BoardService{
 	TrippleDes trippleDes;
 	
 	@Override
-	public List<Map<String,Object>> findAll(String rank,String position,String playTime,String hash) {
+	public List<Map<String,Object>> findAll(String rank,String position,String playTime,String hash , int page , int pageSize) {
 		
 		if(!SignatureUtil.compareHash(rank+position+playTime+Config.KEY.SECRET, hash)){
 			return null;
 		}
 		
-		List<Board> boardList = boardQueryDsl.findAll(rank,position,playTime);
+		List<Board> boardList = boardQueryDsl.findAll(rank,position,playTime,page ,pageSize);
 		BoardVO boardVO = new BoardVO();
 		return boardVO.vo(boardList);
 	}
