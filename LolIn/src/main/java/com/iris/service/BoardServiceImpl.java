@@ -40,15 +40,16 @@ public class BoardServiceImpl implements BoardService{
 	TrippleDes trippleDes;
 	
 	@Override
-	public List<Map<String,Object>> findAll(String rank,String position,String playTime,String hash , int page , int pageSize) {
+	public Map<String,Object> findAll(String rank,String position,String playTime,String hash , int page , int pageSize) {
 		
 		if(!SignatureUtil.compareHash(rank+position+playTime+Config.KEY.SECRET, hash)){
 			return null;
 		}
 		
+		int pageTotalCount = boardQueryDsl.findAll(rank,position,playTime).size();
 		List<Board> boardList = boardQueryDsl.findAll(rank,position,playTime,page ,pageSize);
 		BoardVO boardVO = new BoardVO();
-		return boardVO.vo(boardList);
+		return boardVO.vo(boardList,pageTotalCount);
 	}
 
 	@Override
@@ -64,7 +65,7 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
-	public List<Map<String, Object>> findMyAll(String facebookId,String hash) {
+	public Map<String,Object> findMyAll(String facebookId,String hash) {
 		
 		if(!SignatureUtil.compareHash(facebookId+Config.KEY.SECRET, hash)){
 			return null;
@@ -78,9 +79,9 @@ public class BoardServiceImpl implements BoardService{
 		}
 		
 		User user = userDao.findByFacebookId(facebookId);
-		List<Board> boardList = boardDao.findByAddUsers(user);
+		List<Board> boardList = boardDao.findByAddUsersOrderByIdDesc(user);
 		BoardVO boardVO = new BoardVO();
-		return boardVO.vo(boardList);
+		return boardVO.vo(boardList,0);
 		
 	}
 

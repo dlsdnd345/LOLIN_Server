@@ -17,6 +17,15 @@ public class BoardQueryDsl extends QueryDslRepositorySupport {
         super(Board.class);
     }
 
+    /**
+     * 페이징 메인 게시판 조회
+     * @param rank
+     * @param position
+     * @param playTime
+     * @param page
+     * @param pageSize
+     * @return
+     */
 	public List<Board> findAll(String rank , String position , String playTime , int page , int pageSize) {
     	QBoard board = QBoard.board;
     	
@@ -44,7 +53,44 @@ public class BoardQueryDsl extends QueryDslRepositorySupport {
         
         return bookList;
     }
+	
+	/**
+	 * 메인 게시판 조회
+	 * @param rank
+	 * @param position
+	 * @param playTime
+	 * @param page
+	 * @param pageSize
+	 * @return
+	 */
+	public List<Board> findAll(String rank , String position , String playTime) {
+    	QBoard board = QBoard.board;
+    	
+    	  BooleanExpression conditions = board.id.isNotNull();
+    	
+    	if(!rank.equals("")){
+    		conditions = conditions
+    				.and(board.rank.eq(rank));
+    	}
+    	if(!position.equals("")){
+    		conditions = conditions
+    				.and(board.position.eq(position));
+    	}
+    	if(!playTime.equals("")){
+    		conditions = conditions
+    				.and(board.playTime.eq(playTime));
+    	}
+    	
+        List<Board> bookList = from(board).where(conditions).orderBy(board.id.desc()).list(board);
+        
+        return bookList;
+    }
     
+	/**
+	 * 이름으로 검색
+	 * @param title
+	 * @return
+	 */
     public List<Board> findByName(String title) {
     	QBoard board = QBoard.board;
         List<Board> bookList = from(board).where(board.title.eq(title)).list(board);

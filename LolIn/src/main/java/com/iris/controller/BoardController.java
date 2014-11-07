@@ -21,6 +21,17 @@ public class BoardController {
     @Autowired
     BoardService boardService;
 
+    /**
+     * 메인 게시판 전체 검색 
+     * @param rank
+     * @param position
+     * @param playTime
+     * @param page
+     * @param pageSize
+     * @param hash
+     * @return
+     * @throws ParseException
+     */
     @RequestMapping(value = "/board/findAll", method = RequestMethod.GET)
     @ResponseBody
     public Object findAll(@RequestParam(value = "rank",defaultValue="") String rank,
@@ -33,6 +44,13 @@ public class BoardController {
         return boardService.findAll(rank,position,playTime,hash,page,pageSize);
     }
     
+    /**
+     * 내 게시판 검색 
+     * @param faceBookId
+     * @param hash
+     * @return
+     * @throws ParseException
+     */
     @RequestMapping(value = "/board/findMyAll", method = RequestMethod.GET)
     @ResponseBody
     public Object findMyAll(@RequestParam(value = "faceBookId") String faceBookId,
@@ -40,6 +58,13 @@ public class BoardController {
         return boardService.findMyAll(faceBookId,hash);
     }
     
+    /**
+     * 게시판 한개 검색
+     * @param boardId
+     * @param hash
+     * @return
+     * @throws ParseException
+     */
     @RequestMapping(value = "/board/findOne", method = RequestMethod.GET)
     @ResponseBody
     public Object findOne(@RequestParam(value = "boardId") int boardId,

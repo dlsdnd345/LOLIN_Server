@@ -18,6 +18,6 @@ import com.iris.entities.User;
  */
 public interface BoardDao extends JpaRepository<Board, Integer> {
 
-    List<Board> findByAddUsers(User user);
+    List<Board> findByAddUsersOrderByIdDesc(User user);
     //List<Book> findByStatusOrderByStatusAsc(BookStatus status);
 }
