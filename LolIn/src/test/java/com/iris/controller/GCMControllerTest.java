@@ -17,7 +17,9 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
 
+import com.iris.config.Config;
 import com.iris.dao.RepleDao;
+import com.iris.utils.SignatureUtil;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({
@@ -45,12 +47,21 @@ public class GCMControllerTest {
 
 	        MockHttpSession session = new MockHttpSession();
 
+	        String os = "android";
+	        String boardId = "37";
+	        String summernerName = "dlsdnd345";
+	        String facebookId = "611386895643416";
+	        String reple = "dlsdnd345 친추 하고 연락 주세요.";
+	        
+	        String hash = SignatureUtil.getHash(os+ boardId + summernerName + facebookId + reple + Config.KEY.SECRET);
+	        
 	        mockMvc.perform(get("/gcm/sendReple")
-	        		.param("os", "android")
-	        		.param("boardId", "11")
-	        		.param("summernerName", "dlsdnd345")
-	        		.param("reple", "dlsdnd345 친추 하고 연락 주세요.")
-	        		.param("facebookId", "611386895643416")
+	        		.param("os", os)
+	        		.param("boardId", boardId)
+	        		.param("summernerName", summernerName)
+	        		.param("reple", reple)
+	        		.param("facebookId", facebookId)
+	        		.param("hash", hash)
 	        		.session(session)).andExpect(status().isOk())
 	                .andDo(print())
 	                .andReturn();
