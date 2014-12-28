@@ -51,7 +51,7 @@ public class BoardAndRepleVO {
 		for (Reple reple : repleList) {
 			Map<String,Object> repleMap = new HashMap<>();
 			repleMap.put(REPLE_ID, reple.getId());
-			repleMap.put(FACEBOOK_ID, board.getAddUsers().getFacebookId());
+			repleMap.put(FACEBOOK_ID, reple.getFacebookId());
 			repleMap.put(REPLE_CONTENT, reple.getContent());
 			repleMap.put(USER_NAME, reple.getUserName());
 			repleMap.put(WRITE_TIME, format.format(reple.getWriteTime()));
