@@ -49,8 +49,8 @@ public class GCMControllerTest {
 
 	        String os = "android";
 	        String boardId = "37";
-	        String summernerName = "dlsdnd345";
-	        String facebookId = "611386895643416";
+	        String summernerName = "u123";
+	        String facebookId = "1541599999448752";
 	        String reple = "dlsdnd345 친추 하고 연락 주세요.";
 	        
 	        String hash = SignatureUtil.getHash(os+ boardId + summernerName + facebookId + reple + Config.KEY.SECRET);

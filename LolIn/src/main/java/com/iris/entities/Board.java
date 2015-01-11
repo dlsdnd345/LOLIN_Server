@@ -66,6 +66,9 @@ public class Board implements Serializable {
 	@Column(name = "tea")
 	private String tea;
 	
+	@Column(name = "os")
+	private String os;
+	
 	@OneToMany(mappedBy="addBoards")
 	private List<Reple> addReple;
 
@@ -139,6 +142,14 @@ public class Board implements Serializable {
 
 	public List<Reple> getAddReple() {
 		return addReple;
+	}
+	
+	public String getOs() {
+		return os;
+	}
+
+	public void setOs(String os) {
+		this.os = os;
 	}
 
 	public void setAddReple(List<Reple> addReple) {

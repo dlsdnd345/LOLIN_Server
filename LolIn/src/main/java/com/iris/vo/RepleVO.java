@@ -16,6 +16,7 @@ public class RepleVO {
 	private static final String REPLE_CONTENT 			= "repleContent";
 	private static final String USER_NAME 				= "userName";
 	private static final String WRITE_TIME 				= "writeTime";
+	private static final String OS						= "os";
 	
 public List<Map<String,Object>> vo(List<Reple> repleList){
 		
@@ -28,6 +29,7 @@ public List<Map<String,Object>> vo(List<Reple> repleList){
 			vo.put(FACEBOOK_ID, reple.getFacebookId());
 			vo.put(REPLE_CONTENT, reple.getContent());
 			vo.put(USER_NAME, reple.getUserName());
+			vo.put(OS, reple.getOs());
 			vo.put(WRITE_TIME, format.format(reple.getWriteTime()));
 			repleListResult.add(vo);
 		}

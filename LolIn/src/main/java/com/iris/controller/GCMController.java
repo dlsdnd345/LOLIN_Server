@@ -19,14 +19,24 @@ public class GCMController {
 	
     @RequestMapping(value = "/gcm/sendReple", method = RequestMethod.GET)
     @ResponseBody
-    public Object sendPush(@RequestParam(value = "os") String os,
-    						@RequestParam(value = "boardId") String boardId,
+    public Object sendPush(@RequestParam(value = "boardId") String boardId,
     						@RequestParam(value = "summernerName") String summernerName,
     						@RequestParam(value = "facebookId") String facebookId,
     						@RequestParam(value = "reple") String reple,
     						@RequestParam(value = "hash") String hash) throws ParseException {
     	
-    	return gcmService.sendPush(os, boardId, summernerName, facebookId, reple, hash);
+    	return gcmService.sendPush(boardId, summernerName, facebookId, reple, hash);
+    }
+    
+    @RequestMapping(value = "/gcm/sendMeReple", method = RequestMethod.GET)
+    @ResponseBody
+    public Object sendMePush(@RequestParam(value = "boardId") String boardId,
+    						@RequestParam(value = "summernerName") String summernerName,
+    						@RequestParam(value = "facebookId") String facebookId,
+    						@RequestParam(value = "reple") String reple,
+    						@RequestParam(value = "hash") String hash) throws ParseException {
+    	
+    	return gcmService.notMeAllSendPush(boardId, summernerName, facebookId, reple, hash);
     }
     
 }

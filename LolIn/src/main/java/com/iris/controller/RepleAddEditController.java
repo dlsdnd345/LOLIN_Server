@@ -24,9 +24,10 @@ public class RepleAddEditController {
     					@RequestParam(value = "userName") String userName,
     					@RequestParam(value = "content") String content,
     					@RequestParam(value = "facebookId") String facebookId,
+    					@RequestParam(value = "os") String os,
     					@RequestParam(value = "hash") String hash) throws ParseException {
     	
-    	return repleService.save(boardId,userName,content,facebookId,hash);
+    	return repleService.save(boardId,userName,content,facebookId,os,hash);
     }
     
     @RequestMapping(value = "/reple/delete", method = RequestMethod.GET)

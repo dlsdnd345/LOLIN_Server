@@ -30,6 +30,8 @@ public class QReple extends EntityPathBase<Reple> {
 
     public final NumberPath<Integer> id = createNumber("id", Integer.class);
 
+    public final StringPath os = createString("os");
+
     public final StringPath userName = createString("userName");
 
     public final DateTimePath<java.util.Date> writeTime = createDateTime("writeTime", java.util.Date.class);

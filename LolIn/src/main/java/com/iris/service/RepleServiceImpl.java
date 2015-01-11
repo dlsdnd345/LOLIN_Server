@@ -44,9 +44,9 @@ public class RepleServiceImpl implements RepleService {
 	 * 댓글 저장
 	 */
 	@Override
-	public String save(int boardId , String userName ,String content , String facebookId ,String hash) {
+	public String save(int boardId , String userName ,String content , String facebookId ,String os ,String hash) {
 		
-		if(!SignatureUtil.compareHash(boardId+ userName + content + facebookId + Config.KEY.SECRET, hash)){
+		if(!SignatureUtil.compareHash(boardId+ userName + content + facebookId + os + Config.KEY.SECRET, hash)){
 			return null;
 		}
 		
@@ -65,6 +65,7 @@ public class RepleServiceImpl implements RepleService {
 		reple.setContent(content);
 		reple.setUserName(userName);
 		reple.setFacebookId(facebookId);
+		reple.setOs(os);
 		
 		repleDao.save(reple);
 		

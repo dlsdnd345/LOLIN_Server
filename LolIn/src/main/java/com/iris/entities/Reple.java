@@ -33,6 +33,9 @@ public class Reple implements Serializable{
 	@Column(name = "facebookId")
 	private String facebookId;
 	
+	@Column(name = "os")
+	private String os;
+	
 	@Column(name = "writeTime")
 	private Date writeTime;
 	
@@ -72,6 +75,14 @@ public class Reple implements Serializable{
 
 	public void setFacebookId(String facebookId) {
 		this.facebookId = facebookId;
+	}
+
+	public String getOs() {
+		return os;
+	}
+
+	public void setOs(String os) {
+		this.os = os;
 	}
 
 	public Date getWriteTime() {

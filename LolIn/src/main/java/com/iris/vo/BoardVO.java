@@ -22,7 +22,8 @@ public class BoardVO {
 	private static final String REPLE_COUNT	 		= "repleCount";
 	private static final String PAGE_TOTAL_COUNT	 	= "pageTotalCount";
 	private static final String BOARD_LIST	 		= "boardList";
-
+	private static final String OS					= "os";
+	
 	public Map<String,Object> vo(List<Board> boardList , int pageCount){
 
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -45,7 +46,7 @@ public class BoardVO {
 			vo.put(SUMMONER_NAME, board.getAddUsers().getSummonerName());
 			vo.put(REPLE_COUNT, board.getAddReple().size());
 			vo.put(PAGE_TOTAL_COUNT, board.getAddReple().size());
-			
+			vo.put(OS, board.getOs());
 			boardListResult.add(vo);
 		}
 		

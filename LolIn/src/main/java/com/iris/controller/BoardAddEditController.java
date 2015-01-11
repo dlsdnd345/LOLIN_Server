@@ -28,9 +28,12 @@ public class BoardAddEditController {
     					@RequestParam(value = "rank") String rank,
     					@RequestParam(value = "playTime") String playTime,
     					@RequestParam(value = "tea") String tea,
+    					@RequestParam(value = "os") String os,
     					@RequestParam(value = "hash") String hash) throws ParseException {
     	
-    	return boardService.save(boardId,faceBookId,title, content, position, rank, playTime,tea,hash);
+    	System.out.println("@@@@@@@@@@  os : " + os);
+    	
+    	return boardService.save(boardId,faceBookId,title, content, position, rank, playTime,tea,os,hash);
     }
 
     @RequestMapping(value = "/board/delete", method = RequestMethod.GET)
