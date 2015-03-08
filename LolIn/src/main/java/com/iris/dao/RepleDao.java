@@ -2,7 +2,6 @@ package com.iris.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.iris.entities.Board;
 import com.iris.entities.Reple;
 
 /*

@@ -8,8 +8,7 @@
 		<mapping class="com.iris.entities.Board" />
 		<mapping class="com.iris.entities.Reple" />
 		<mapping class="com.iris.entities.User" />
-		<!-- <mapping class="com.iw.entitys.User" /> -->
-		<!-- <mapping class="com.iw.entitys.History"/> -->
+		<mapping class="com.iris.entities.UpdateBoard" />
 	</session-factory>
 
 </hibernate-configuration>

@@ -5,8 +5,6 @@ import java.util.List;
 import org.springframework.data.jpa.repository.support.QueryDslRepositorySupport;
 import org.springframework.stereotype.Repository;
 
-import com.iris.entities.Board;
-import com.iris.entities.QBoard;
 import com.iris.entities.QReple;
 import com.iris.entities.Reple;
 

@@ -1,7 +1,6 @@
 package com.iris.controller;
 
 import java.text.ParseException;
-import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,11 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.iris.dao.BoardDao;
-import com.iris.entities.User;
-import com.iris.service.BoardService;
 import com.iris.service.UserService;
-import com.iris.utils.SignatureUtil;
 
 @Controller
 public class UserController {

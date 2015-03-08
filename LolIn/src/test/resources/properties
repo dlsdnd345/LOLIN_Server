@@ -1,5 +1,5 @@
 connect.driver=com.mysql.jdbc.Driver
 connect.url=jdbc:mysql://localhost/lolin
 connect.username=root
-connect.password=dlsdnd50715071
+connect.password=dlsdnd!50715071
 connect.dialect=org.hibernate.dialect.MySQL5InnoDBDialect

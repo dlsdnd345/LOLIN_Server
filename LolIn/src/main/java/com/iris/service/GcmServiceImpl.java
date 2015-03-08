@@ -29,7 +29,6 @@ public class GcmServiceImpl implements GcmService {
 	private static final String API_KEY = "AIzaSyCJoQvjxlp_LQ3H0M5WtF96V4g2LkGm6dQ"; 
 	private static final String PUSH_SUCESS_MESSAGE = "푸시 전송에 성공 하였습니다.";
 
-	private String regId;
 
 	@Autowired
 	BoardDao boardDao;

@@ -10,7 +10,6 @@ import com.iris.entities.Reple;
 
 public class RepleVO {
 
-	private static final String REPLE_LIST 				= "repleList";
 	private static final String FACEBOOK_ID 				= "facebookId";
 	private static final String REPLE_ID 					= "id";
 	private static final String REPLE_CONTENT 			= "repleContent";

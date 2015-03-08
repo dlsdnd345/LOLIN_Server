@@ -1,12 +1,6 @@
 package com.iris.service;
 
-import java.util.List;
 import java.util.Map;
-
-import org.springframework.data.domain.Pageable;
-
-import com.iris.entities.Board;
-import com.iris.vo.BoardAndRepleVO;
 
 public interface BoardService {
 
