@@ -85,10 +85,10 @@ public class BoardServiceImpl implements BoardService{
 	public String save
 	(String boardId,String facebookId ,String title, String content, String position,
 			String rank, String playTime , String tea,String os, String hash) {
-		
 		if(!SignatureUtil.compareHash(boardId+facebookId+title+content+position+rank+playTime+tea+os+Config.KEY.SECRET, hash)){
 			return null;
 		}
+		
 		
 		try {
 			trippleDes = new TrippleDes();
@@ -97,8 +97,11 @@ public class BoardServiceImpl implements BoardService{
 			e1.printStackTrace();
 		}
 		
+		
 		User user = userDao.findByFacebookId(facebookId);
 		Board board = null;
+		
+		
 		
 		if(boardId  == ""){
 			board = new Board();
@@ -115,6 +118,7 @@ public class BoardServiceImpl implements BoardService{
 		board.setAddUsers(user);
 		board.setTea(tea);
 		board.setOs(os);
+		
 		
 		boardDao.save(board);
 		

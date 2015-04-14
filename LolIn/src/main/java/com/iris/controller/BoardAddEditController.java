@@ -30,8 +30,6 @@ public class BoardAddEditController {
     					@RequestParam(value = "os") String os,
     					@RequestParam(value = "hash") String hash) throws ParseException {
     	
-    	System.out.println("@@@@@@@@@@  os : " + os);
-    	
     	return boardService.save(boardId,faceBookId,title, content, position, rank, playTime,tea,os,hash);
     }
 
