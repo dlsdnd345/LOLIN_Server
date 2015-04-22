@@ -1,0 +1,5 @@
+
+
+.container{ width: 100%; height: 100%; display: table; }
+
+form{ width: 400px; height: 400px; display: table-cell; text-align: center; vertical-align: middle;}

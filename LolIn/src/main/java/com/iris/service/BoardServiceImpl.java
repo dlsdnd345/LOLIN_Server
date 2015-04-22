@@ -119,9 +119,9 @@ public class BoardServiceImpl implements BoardService{
 		board.setTea(tea);
 		board.setOs(os);
 		
-		
-		boardDao.save(board);
-		
+		if(user != null && user.getId() != 0){
+			boardDao.save(board);
+		}
 		return SAVE;
 	}
 
