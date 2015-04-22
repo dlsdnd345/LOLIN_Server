@@ -68,6 +68,7 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("<script src=\"http://code.jquery.com/jquery-1.9.0.js\"></script>\n");
       out.write("<script src=\"/js/index.js\"></script>\n");
+      out.write("\n");
       out.write("</html>\n");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){

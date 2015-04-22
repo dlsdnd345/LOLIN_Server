@@ -19,22 +19,23 @@ public class AdminController {
 	AdminService adminService;
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public Object login() throws ParseException {
+	public Object getLoginJsp() throws ParseException {
 		return "index";
+	}
+	
+	@RequestMapping(value = "/push", method = RequestMethod.GET)
+	public Object getPushJsp() throws ParseException {
+		return "push";
 	}
 
 
 	@RequestMapping(value = "/login/submit", method = RequestMethod.GET)
+	@ResponseBody
 	public Object submit(@RequestParam(value = "userId") String userId,
 			@RequestParam(value = "password") String password) throws ParseException {
 
 		boolean isOk = adminService.login(userId, password);
-
-		if(isOk){
-			return "push";
-		}else{
-			return "index"; 
-		}
+		return isOk;
 
 	}
 
