@@ -33,8 +33,9 @@ public class AdminController {
 	@ResponseBody
 	public Object submit(@RequestParam(value = "userId") String userId,
 			@RequestParam(value = "password") String password) throws ParseException {
-
+		
 		boolean isOk = adminService.login(userId, password);
+		
 		return isOk;
 
 	}

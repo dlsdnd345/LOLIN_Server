@@ -172,4 +172,41 @@ public class GcmServiceImpl implements GcmService {
 		return PUSH_SUCESS_MESSAGE;
 	}
 
+
+	@Override
+	public String sendAllPush(String message) {
+		
+		
+		List<User> userList = userDao.findAll();
+
+		for (int i = 0; i < userList.size(); i++) {
+			
+			Sender sender = new Sender(API_KEY);				//푸시 보내는 객체 생성
+			Message.Builder builder = new Message.Builder();	//푸시 메시지 만드는 객체
+			builder.collapseKey(String.valueOf(Math.random() % 100 + 1));
+			builder.addData("message", message);
+			builder.delayWhileIdle(true);
+			builder.timeToLive(3);
+			Message msg = builder.build();
+
+			Result result = null;
+			try {
+				result = sender.send(msg,  userList.get(i).getPushId(), 5);			//푸시 전송
+
+				if (result.getMessageId() != null) {
+					System.out.println("Send success");
+				} else {
+					String error = result.getErrorCodeName();
+					System.out.println("Send fail : " + error);
+				}
+
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			
+		}
+
+		return PUSH_SUCESS_MESSAGE;
+	}
+
 }

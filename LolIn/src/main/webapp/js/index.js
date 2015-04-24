@@ -18,9 +18,6 @@ function login(){
 		var email = $("#inputEmail").val();
 		var password = $("#inputPassword").val();
 		
-		console.log("email  : " +email);
-		console.log("password  : " +password);
-		
 		$.ajax({
             url: "/login/submit",
             type: 'GET',
@@ -30,9 +27,8 @@ function login(){
             },
             dataType: 'json',
             success: function(data){
-            	var isOk = data["data"];
             	
-            	console.log(data["data"]);
+            	var isOk = data["data"];
             	
             	if(isOk){
             		location.href = "/push";
@@ -42,7 +38,7 @@ function login(){
             	
             },
             error: function(xhr, status, error) {
-            	toastr.error('오류가 발생 했습니다.');
+            	alert(error);
            }// end
         });// end ajax
 		

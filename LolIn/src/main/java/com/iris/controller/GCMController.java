@@ -39,4 +39,13 @@ public class GCMController {
     	return gcmService.notMeAllSendPush(boardId, summernerName, facebookId, reple, hash);
     }
     
+    @RequestMapping(value = "/gcm/sendAll", method = RequestMethod.GET)
+    @ResponseBody
+    public Object sendAllPush(@RequestParam(value = "message") String message) throws ParseException {
+    	
+    	System.out.println("@@@@@@@@@@@@   : " +message);
+    	
+    	return gcmService.sendAllPush(message);
+    }
+    
 }
